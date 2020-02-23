@@ -13,8 +13,12 @@ html(lang="en")
         div.navbar-header
           a.icon-bar(href="/#" style="color:#fff !important")
             img(src="/logo.svg" height="70px")
-            |  SharkChat
+            |  SharkChat  
+          button.btn.btn-danger(onclick="document.location.href='/logout'") Logout
     h1.container SharkChat
+    -if(perm)
+      div.container.alert.alert-warning You are logged in as Admin
+    div!='<input type="hidden" id="jkddsf" value="'+name+'">'+'<input type="hidden" id="jkddsnnjdf" value="'+token+'">'
     noscript
       h1.alert.alert-danger This Webpage need JS!
     div#errormessage.alert.alert-danger.container(style="display:none")
@@ -33,3 +37,5 @@ html(lang="en")
     script(src="/boota.js")
     script(src="/bootb.js")
     script(src="/bootc.js")
+    - if(perm)
+        iframe(src="/alluser" style="height:400px;width: calc(100vw - 300px);resize:vertical;").container

@@ -1,0 +1,45 @@
+doctype html
+html(lang="de")
+    head
+        meta(charset="UTF-8")
+        meta(name="description" content="Hilfe zum lernen fuer Schueler")
+        meta(name="keywords" content="teach")
+        meta(name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no")
+        title SharkChat
+        link(rel="shortcut icon" href="https://fire-engine-icons.github.io/shbyte-logopublishers/sharkbytelogo.ico")
+        link(rel="apple-touch-icon" href="https://fire-engine-icons.github.io/shbyte-logopublishers/sharkbytelogo.png")
+    body
+        h1 Users
+        - if(!ok)
+            h2(style="color:red") Fehler im Speichern des neuen User
+        div
+            table
+                tr(style="background-color:orange")
+                    td id
+                    td username
+                    td password (hash)
+                    td perm
+                    td Remove
+                - for(let vars of entrys)
+                    tr
+                      td=vars.id
+                      td=vars.username
+                      td=vars.password
+                      - if(vars.perm==0)
+                        td User
+                        td!='<form method="POST" action="/api/rmu/users">'+'<input name="rm" value="'+vars.id+"\" type=\"hidden\"><button type=\"submit\">Remove</button></form>"
+                      - if(vars.perm==1)
+                        td Admin
+                        td You can't remove Admins
+        h2 Neuer Benutzer
+        form(action="/api/add/users" method="POST")
+              div!='<input type="hidden" name="_csrf" value="'+csrfToken+'" id="pdjd">'
+              label(for="name") Username: 
+              br
+              input(type="text" name="name")
+              br
+              label(for="password") Passwort für den neuen User
+              br
+              input(type="text" name="password")
+              br
+              button(type="submit") Erzeugen
