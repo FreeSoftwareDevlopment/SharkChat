@@ -1,0 +1,42 @@
+name: Webpack.work
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [8.x, 10.x, 12.x]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - run: cd bundle&&npm install
+    - run: cd bundle&&npm test
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: Bundle
+        path: ./bundle/dist/
+    - name: Cache
+      uses: actions/cache@v1.1.2
+      with:
+         # A directory to store and save the cache
+        path: ./bundle/node_modules
+      # An explicit key for restoring and saving the cache
+        key: node-mod
+    # An ordered list of keys to use for restoring the cache if no cache hit occurred for key
+        restore-keys: node-mod
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        # Artifact name
+        name: complete.bundle
+        # Directory containing files to upload
+        path: .
