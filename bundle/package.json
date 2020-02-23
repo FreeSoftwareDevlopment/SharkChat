@@ -1,0 +1,16 @@
+{
+  "name": "Bundle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ws.js",
+  "scripts": {
+    "test": "webpack&&node move.js&&node move.bundle.js"
+  },
+  "keywords": [],
+  "author": "Sharkbyte",
+  "license": "ISC",
+  "Dependencies": {
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  }
+}

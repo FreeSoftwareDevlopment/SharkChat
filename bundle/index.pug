@@ -1,0 +1,35 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    link(rel="icon" href="https://fire-engine-icons.github.io/shbyte-logopublishers/sharkbytelogo.ico")
+    title SharkChat
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(href="/bootstrap.css" rel="stylesheet")
+    link(href="/style.css" rel="stylesheet")
+  body
+    nav.navbar.navbar-expand-sm.justify-content-center.bg-primary.navbar-dark
+      div.container
+        div.navbar-header
+          a.icon-bar(href="/#" style="color:#fff !important")
+            img(src="/logo.svg" height="70px")
+            |  SharkChat
+    h1.container SharkChat
+    noscript
+      h1.alert.alert-danger This Webpage need JS!
+    div#errormessage.alert.alert-danger.container(style="display:none")
+      strong You are disconnected.
+      |  We retry to reconnect you!
+    div.container.alert.alert-success#okmessage(style="display:none")
+      strong You're connected!
+    h3.container#userid.alert.alert-dark Loading
+    div#msgs.container
+    form(action="#").container.form-group#formdsj
+      label(for="xy") Your Message:
+      input(type="text" name="xy" placeholder="message").form-control#inputmsg
+      button(type="submit").btn.btn-primary Send
+    p.container The username will generate from external software 'username-generator' on NPM
+    script(src="/ws.bundle.js")
+    script(src="/boota.js")
+    script(src="/bootb.js")
+    script(src="/bootc.js")
