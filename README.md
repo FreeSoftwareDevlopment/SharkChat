@@ -1,2 +1,4 @@
-- [ON GITHUB](https://github.com/Sharkbyteprojects/SharkChat)
-- [ON GLITCH](https://glitch.com/edit/#!/webchat-shark)
+under Construction
+=====
+[Use this chat](https://webchat-shark.glitch.me/)
+

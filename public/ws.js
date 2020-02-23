@@ -2,6 +2,7 @@
   This Scipt it Sharkbytes Property!
 */
 var prot = "ws://";
+var token = document.getElementById("jkddsnnjdf").value;
 var head =
   '<table class="table table-hover"><thead><tr><th>user</th><th>message</th></tr></thead><tbody>';
 var end = "</tbody></table>";
@@ -33,6 +34,7 @@ function reconn() {
   };
 
   connection.onmessage = function(e) {
+    username = document.getElementById("jkddsf").value;
     console.log("Incoming Message: " + e.data);
 
     var datas = JSON.parse(e.data);
@@ -41,12 +43,7 @@ function reconn() {
       document.getElementById("errormessage").style = "display:none";
       document.getElementById("okmessage").style = "display:block";
       console.info("Connected");
-      if (cookes.search("username") === "") {
-        username = datas.data;
-        cookes.add("username", username);
-      } else {
-        username = cookes.search("username");
-      }
+      username = document.getElementById("jkddsf").value;
 
       document.getElementById("formdsj").onsubmit = function() {
         var valumse = document.getElementById("inputmsg").value;
@@ -57,7 +54,8 @@ function reconn() {
             JSON.stringify({
               action: "push",
               user: username,
-              data: valumse
+              data: valumse,
+              token: token
             })
           );
         }
@@ -96,7 +94,15 @@ function reconn() {
       messages.push(_parsed2);
       var _clone2 = messages;
       document.getElementById("msgs").innerHTML = head + _clone2.join("") + end;
-    } else {
+    } else if (datas.action === "tokenerr") {
+      var _parsed2 =
+        '<tr class="serverspama"><td>Server</td><td>Your token is not valid, try to reload!</td></tr>';
+      messages.push(_parsed2);
+      var _clone2 = messages;
+      document.getElementById("msgs").innerHTML = head + _clone2.join("") + end;
+    }else if(datas.action==="newtoken"){
+      token=datas.data;
+    }else {
       console.warn("Something went Wrong");
     }
   };

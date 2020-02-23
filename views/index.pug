@@ -7,16 +7,18 @@ html(lang="en")
     meta(name="viewport" content="width=device-width, initial-scale=1")
     link(href="/bootstrap.css" rel="stylesheet")
     link(href="/style.css" rel="stylesheet")
-    script(src="/randomcolor.js")
-    script(src="/cookiemanager.js")
   body
     nav.navbar.navbar-expand-sm.justify-content-center.bg-primary.navbar-dark
       div.container
         div.navbar-header
           a.icon-bar(href="/#" style="color:#fff !important")
             img(src="/logo.svg" height="70px")
-            |  SharkChat
+            |  SharkChat  
+          button.btn.btn-danger(onclick="document.location.href='/logout'") Logout
     h1.container SharkChat
+    -if(perm)
+      div.container.alert.alert-warning You are logged in as Admin
+    div!='<input type="hidden" id="jkddsf" value="'+name+'">'+'<input type="hidden" id="jkddsnnjdf" value="'+token+'">'
     noscript
       h1.alert.alert-danger This Webpage need JS!
     div#errormessage.alert.alert-danger.container(style="display:none")
@@ -31,8 +33,9 @@ html(lang="en")
       input(type="text" name="xy" placeholder="message").form-control#inputmsg
       button(type="submit").btn.btn-primary Send
     p.container The username will generate from external software 'username-generator' on NPM
-    script(src="/scroll.js")
-    script(src="/ws.js")
+    script(src="/ws.bundle.js")
     script(src="/boota.js")
     script(src="/bootb.js")
     script(src="/bootc.js")
+    - if(perm)
+        iframe(src="/alluser" style="height:400px;width: calc(100vw - 300px);resize:vertical;").container

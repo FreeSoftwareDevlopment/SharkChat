@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="utf-8")
+    link(rel="icon" href="https://fire-engine-icons.github.io/shbyte-logopublishers/sharkbytelogo.ico")
+    title SharkChat
+    meta(name="viewport" content="width=device-width, initial-scale=1")
+    link(href="/bootstrap.css" rel="stylesheet")
+    link(href="/style.css" rel="stylesheet")
+    script new Promise((res,se)=>{setInterval(()=>{window.location.reload(true);},(1000*60)*4}).then((x)=>{console.log("null")})
+  body
+    nav.navbar.navbar-expand-sm.justify-content-center.bg-primary.navbar-dark
+      div.container
+        div.navbar-header
+          a.icon-bar(href="/#" style="color:#fff !important")
+            img(src="/logo.svg" height="70px")
+            |  SharkChat
+    form(action="/login", method="POST").form-group
+          label(for="username") Benutzername: 
+          input(name="username" type="text").form-control
+          br
+          label(for="password") Passwort: 
+          input(type="password", name="password").form-control
+          br
+          button(type="submit").btn.btn-success Login
