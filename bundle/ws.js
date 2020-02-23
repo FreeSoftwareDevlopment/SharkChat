@@ -6,6 +6,9 @@ import scrolldown from './scroll.js';
 /*
   This Scipt it Sharkbytes Property!
 */
+/*
+  This Scipt it Sharkbytes Property!
+*/
 var prot = "ws://";
 var token = document.getElementById("jkddsnnjdf").value;
 var head =
